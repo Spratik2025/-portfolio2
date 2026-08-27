@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Pratik Sutar — Computer Science Engineering graduate and Machine Learning Intern specializing in Python, Data Science, Machine Learning and Generative AI." />
+  <meta name="theme-color" content="#0b1120" />
+
+  <title>Pratik Sutar | Data Science & Machine Learning</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Inter", "sans-serif"]
+          },
+          colors: {
+            accent: {
+              300: "#5eead4",
+              400: "#2dd4bf",
+              500: "#14b8a6",
+              600: "#0d9488"
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-soft: #0b1628;
+      --card: rgba(15, 29, 48, 0.72);
+      --card-solid: #0f1d30;
+      --text: #e5eef7;
+      --muted: #91a4b8;
+      --border: rgba(148, 163, 184, 0.14);
+      --accent: #2dd4bf;
+      --accent-soft: rgba(45, 212, 191, 0.12);
+      --nav: rgba(7, 17, 31, 0.78);
+    }
+
+    body.light {
+      --bg: #f5f8fb;
+      --bg-soft: #edf3f7;
+      --card: rgba(255, 255, 255, 0.85);
+      --card-solid: #ffffff;
+      --text: #102033;
+      --muted: #5c6d7e;
+      --border: rgba(15, 23, 42, 0.10);
+      --accent: #0d9488;
+      --accent-soft: rgba(13, 148, 136, 0.10);
+      --nav: rgba(245, 248, 251, 0.82);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(45, 212, 191, 0.08), transparent 30%),
+        radial-gradient(circle at 85% 25%, rgba(56, 189, 248, 0.05), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      transition: background 0.3s ease, color 0.3s ease;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.18;
+      background-image:
+        linear-gradient(rgba(148, 163, 184, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.035) 1px, transparent 1px);
+      background-size: 42px 42px;
+      z-index: -1;
+    }
+
+    .glass {
+      background: var(--card);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .nav-glass {
+      background: var(--nav);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .text-main {
+      color: var(--text);
+    }
+
+    .text-muted {
+      color: var(--muted);
+    }
+
+    .accent-text {
+      color: var(--accent);
+    }
+
+    .accent-bg {
+      background: var(--accent);
+    }
+
+    .accent-soft {
+      background: var(--accent-soft);
+    }
+
+    .section-label {
+      color: var(--accent);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--accent), #67e8f9);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 999px;
+      background: rgba(45, 212, 191, 0.10);
+      filter: blur(90px);
+      top: 5%;
+      right: -120px;
+      pointer-events: none;
+    }
+
+    .avatar-ring {
+      position: relative;
+      padding: 7px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), transparent 60%);
+      box-shadow: 0 0 70px rgba(45, 212, 191, 0.12);
+    }
+
+    .avatar-ring img {
+      display: block;
+      border-radius: 999px;
+      border: 5px solid var(--bg);
+    }
+
+    .project-card {
+      transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(45, 212, 191, 0.45);
+      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.24);
+    }
+
+    .skill-item {
+      transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+    }
+
+    .skill-item:hover {
+      transform: translateY(-4px) rotate(-1deg) scale(1.02);
+      border-color: rgba(45, 212, 191, 0.4);
+      background: var(--accent-soft);
+    }
+
+    .skill-icon {
+      transition: transform 0.25s ease;
+    }
+
+    .skill-item:hover .skill-icon {
+      transform: scale(1.15) rotate(4deg);
+    }
+
+    .timeline-line {
+      background: linear-gradient(
+        to bottom,
+        var(--accent),
+        rgba(45, 212, 191, 0.08)
+      );
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 {
+      transition-delay: 0.08s;
+    }
+
+    .delay-2 {
+      transition-delay: 0.16s;
+    }
+
+    .delay-3 {
+      transition-delay: 0.24s;
+    }
+
+    .nav-link {
+      position: relative;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -8px;
+      width: 0;
+      height: 2px;
+      border-radius: 99px;
+      background: var(--accent);
+      transform: translateX(-50%);
+      transition: width 0.25s ease;
+    }
+
+    .nav-link.active,
+    .nav-link:hover {
+      color: var(--accent);
+    }
+
+    .nav-link.active::after {
+      width: 18px;
+    }
+
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .mobile-menu.open {
+      max-height: 420px;
+    }
+
+    .placeholder-link {
+      cursor: not-allowed;
+      opacity: 0.45;
+    }
+
+    .stat-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::after {
+      content: "";
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      right: -45px;
+      top: -45px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+    }
+
+    ::selection {
+      background: rgba(45, 212, 191, 0.25);
+    }
+  </style>
+</head>
+
+<body class="dark">
+
+  <!-- ==================== NAVBAR ==================== -->
+  <header class="fixed top-0 left-0 right-0 z-50 nav-glass">
+    <nav class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+      <div class="h-[72px] flex items-center justify-between">
+
+        <a href="#home" class="font-extrabold text-xl tracking-tight">
+          <span class="accent-text">P</span>S<span class="text-muted">.</span>
+        </a>
+
+        <div class="hidden md:flex items-center gap-7">
+          <a href="#home" class="nav-link text-sm font-medium active">Home</a>
+          <a href="#about" class="nav-link text-sm font-medium">About</a>
+          <a href="#skills" class="nav-link text-sm font-medium">Skills</a>
+          <a href="#projects" class="nav-link text-sm font-medium">Projects</a>
+          <a href="#experience" class="nav-link text-sm font-medium">Experience</a>
+          <a href="#education" class="nav-link text-sm font-medium">Education</a>
+          <a href="#contact" class="nav-link text-sm font-medium">Contact</a>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <!-- Theme Toggle -->
+          <button
+            id="themeToggle"
+            type="button"
+            aria-label="Toggle dark and light mode"
+            class="w-10 h-10 rounded-xl glass flex items-center justify-center hover:scale-105 transition"
+          >
+            <i id="themeIcon" class="fa-solid fa-sun text-sm"></i>
+          </button>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="menuToggle"
+            type="button"
+            aria-label="Open menu"
+            class="md:hidden w-10 h-10 rounded-xl glass flex items-center justify-center"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation -->
+      <div id="mobileMenu" class="mobile-menu md:hidden">
+        <div class="pb-5 pt-2 flex flex-col gap-1">
+          <a href="#home" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium">Home</a>
+          <a href="#about" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium">About</a>
+          <a href="#skills" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium">Skills</a>
+          <a href="#projects" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium">Projects</a>
+          <a href="#experience" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium">Experience</a>
+          <a href="#education" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium">Education</a>
+          <a href="#contact" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium">Contact</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+  <main>
+
+    <!-- ==================== HERO ==================== -->
+    <section id="home" class="relative min-h-screen flex items-center pt-24 overflow-hidden">
+      <div class="hero-glow"></div>
+
+      <div class="max-w-7xl mx-auto w-full px-5 sm:px-8 lg:px-10 py-20">
+        <div class="grid lg:grid-cols-[1.25fr_0.75fr] gap-14 items-center">
+
+          <div class="reveal">
+            <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-7">
+              <span class="w-2 h-2 rounded-full accent-bg animate-pulse"></span>
+              <span class="text-xs sm:text-sm text-muted">
+                Machine Learning Intern · Actively Job Hunting
+              </span>
+            </div>
+
+            <p class="section-label mb-4">Data Science · Machine Learning · GenAI</p>
+
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.02]">
+              Hi, I'm
+              <span class="gradient-text">Pratik Sutar.</span>
+            </h1>
+
+            <p class="mt-6 text-lg sm:text-xl text-muted max-w-2xl leading-relaxed">
+              Computer Science Engineering graduate building practical
+              machine learning solutions with Python, data analysis,
+              Flask, and Generative AI.
+            </p>
+
+            <div class="mt-9 flex flex-wrap gap-3">
+              <a
+                href="#projects"
+                class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl accent-bg text-slate-950 font-bold text-sm hover:opacity-90 transition shadow-lg"
+              >
+                View Projects
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+
+              <!-- REPLACE: href="#" with the URL/path to your resume PDF -->
+              <a
+                href="PRATIK%20SUTAR%202608.pdf"
+                class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl glass font-semibold text-sm hover:border-teal-400/40 transition"
+              >
+                <i class="fa-solid fa-file-arrow-down"></i>
+                Download Resume
+              </a>
+            </div>
+
+            <div class="mt-9 flex items-center gap-4">
+              <span class="text-xs uppercase tracking-widest text-muted">
+                Connect
+              </span>
+
+              <div class="h-px w-10 bg-slate-500/20"></div>
+
+              <a
+                href="https://github.com/Spratik2025"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                class="w-10 h-10 rounded-xl glass flex items-center justify-center hover:text-teal-400 hover:scale-105 transition"
+              >
+                <i class="fa-brands fa-github"></i>
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/pratik-sutar01"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                class="w-10 h-10 rounded-xl glass flex items-center justify-center hover:text-teal-400 hover:scale-105 transition"
+              >
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+
+              <a
+                href="mailto:pratiksutar978@gmail.com"
+                aria-label="Email"
+                class="w-10 h-10 rounded-xl glass flex items-center justify-center hover:text-teal-400 hover:scale-105 transition"
+              >
+                <i class="fa-solid fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="reveal delay-2 flex justify-center lg:justify-end">
+            <div class="relative">
+              <div class="absolute inset-0 rounded-full bg-teal-400/10 blur-3xl scale-110"></div>
+
+              <div class="avatar-ring relative">
+                <!-- REPLACE: profile picture src with your actual photo -->
+                <img
+                  src="Capture.PNG"
+                  alt="Pratik Sutar profile placeholder"
+                  class="w-56 h-56 sm:w-72 sm:h-72 object-cover"
+                />
+              </div>
+
+              <div class="absolute -bottom-3 -left-8 glass rounded-2xl px-4 py-3 shadow-xl">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-xl accent-soft flex items-center justify-center">
+                    <i class="fa-solid fa-brain accent-text"></i>
+                  </div>
+                  <div>
+                    <p class="text-xs text-muted">Focus</p>
+                    <p class="text-sm font-bold">ML + Data Science</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="absolute -top-4 -right-5 glass rounded-2xl px-4 py-3 shadow-xl">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-xl accent-soft flex items-center justify-center">
+                    <i class="fa-brands fa-python accent-text"></i>
+                  </div>
+                  <div>
+                    <p class="text-xs text-muted">Primary</p>
+                    <p class="text-sm font-bold">Python</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================== STATS ==================== -->
+    <section class="pb-20">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+
+          <div class="stat-card glass rounded-2xl p-6 reveal">
+            <p class="text-3xl sm:text-4xl font-extrabold">
+              <span class="counter" data-target="3">0</span>
+            </p>
+            <p class="text-sm text-muted mt-2">Machine Learning Projects</p>
+          </div>
+
+          <div class="stat-card glass rounded-2xl p-6 reveal delay-1">
+            <p class="text-3xl sm:text-4xl font-extrabold">
+              <span class="counter" data-target="1">0</span>
+            </p>
+            <p class="text-sm text-muted mt-2">Current Internship</p>
+          </div>
+
+          <div class="stat-card glass rounded-2xl p-6 reveal delay-2">
+            <p class="text-3xl sm:text-4xl font-extrabold">
+              <span class="counter" data-target="1">0</span>
+            </p>
+            <p class="text-sm text-muted mt-2">Certification</p>
+          </div>
+
+          <div class="stat-card glass rounded-2xl p-6 reveal delay-3">
+            <p class="text-3xl sm:text-4xl font-extrabold">
+              <span class="counter" data-target="7.35" data-decimals="2">0</span>
+            </p>
+            <p class="text-sm text-muted mt-2">B.Tech CGPA / 10</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================== ABOUT ==================== -->
+    <section id="about" class="py-24">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+
+        <div class="max-w-3xl reveal">
+          <p class="section-label mb-3">01 · About</p>
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+            Turning data into
+            <span class="gradient-text">practical solutions.</span>
+          </h2>
+
+          <p class="mt-6 text-muted text-base sm:text-lg leading-8">
+            Computer Science Engineering graduate with hands-on experience
+            in Python, Machine Learning, SQL, Pandas, NumPy, and Flask.
+            Currently working as a Machine Learning Intern at Valentius
+            Kryptix, gaining practical experience in ML model development
+            and data analysis.
+          </p>
+
+          <p class="mt-5 text-muted text-base sm:text-lg leading-8">
+            Developed projects including House Price Prediction, Crop
+            Prediction, and an AI Personal Expense Advisor. Strong
+            problem-solving skills with a keen interest in Data Science
+            and Machine Learning.
+          </p>
+        </div>
+
+        <div class="mt-12 grid md:grid-cols-3 gap-5">
+
+          <div class="glass rounded-2xl p-6 reveal">
+            <div class="w-11 h-11 rounded-xl accent-soft flex items-center justify-center mb-5">
+              <i class="fa-solid fa-chart-line accent-text"></i>
+            </div>
+            <h3 class="font-bold text-lg">Data Analysis</h3>
+            <p class="text-sm text-muted mt-2 leading-6">
+              Data preprocessing, EDA, feature selection and feature engineering.
+            </p>
+          </div>
+
+          <div class="glass rounded-2xl p-6 reveal delay-1">
+            <div class="w-11 h-11 rounded-xl accent-soft flex items-center justify-center mb-5">
+              <i class="fa-solid fa-robot accent-text"></i>
+            </div>
+            <h3 class="font-bold text-lg">Machine Learning</h3>
+            <p class="text-sm text-muted mt-2 leading-6">
+              Classification, regression, ensemble learning, clustering and model evaluation.
+            </p>
+          </div>
+
+          <div class="glass rounded-2xl p-6 reveal delay-2">
+            <div class="w-11 h-11 rounded-xl accent-soft flex items-center justify-center mb-5">
+              <i class="fa-solid fa-wand-magic-sparkles accent-text"></i>
+            </div>
+            <h3 class="font-bold text-lg">Generative AI</h3>
+            <p class="text-sm text-muted mt-2 leading-6">
+              Google Gemini API, prompt engineering and RAG basics.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================== SKILLS ==================== -->
+    <section id="skills" class="py-24 bg-black/5">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+
+        <div class="reveal">
+          <p class="section-label mb-3">02 · Technical Skills</p>
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+            Tools I use to build
+            <span class="gradient-text">data-driven products.</span>
+          </h2>
+        </div>
+
+        <div class="mt-12 grid lg:grid-cols-2 gap-6">
+
+          <!-- Programming -->
+          <div class="glass rounded-2xl p-6 reveal">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-10 h-10 rounded-xl accent-soft flex items-center justify-center">
+                <i class="fa-solid fa-code accent-text"></i>
+              </div>
+              <h3 class="font-bold">Programming</h3>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <div class="skill-item glass rounded-xl p-4 flex items-center gap-3" title="Python">
+                <i class="fa-brands fa-python skill-icon text-xl accent-text"></i>
+                <span class="text-sm font-medium">Python</span>
+              </div>
+              <div class="skill-item glass rounded-xl p-4 flex items-center gap-3" title="SQL">
+                <i class="fa-solid fa-database skill-icon text-xl accent-text"></i>
+                <span class="text-sm font-medium">SQL</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Data Analysis -->
+          <div class="glass rounded-2xl p-6 reveal delay-1">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-10 h-10 rounded-xl accent-soft flex items-center justify-center">
+                <i class="fa-solid fa-chart-column accent-text"></i>
+              </div>
+              <h3 class="font-bold">Data Analysis</h3>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <div class="skill-item glass rounded-xl p-4 flex items-center gap-3" title="Pandas">
+                <i class="fa-solid fa-table skill-icon text-xl accent-text"></i>
+                <span class="text-sm font-medium">Pandas</span>
+              </div>
+              <div class="skill-item glass rounded-xl p-4 flex items-center gap-3" title="NumPy">
+                <i class="fa-solid fa-calculator skill-icon text-xl accent-text"></i>
+                <span class="text-sm font-medium">NumPy</span>
+              </div>
+              <div class="skill-item glass rounded-xl p-4 flex items-center gap-3" title="Matplotlib">
+                <i class="fa-solid fa-chart-area skill-icon text-xl accent-text"></i>
+                <span class="text-sm font-medium">Matplotlib</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Machine Learning -->
+          <div class="glass rounded-2xl p-6 reveal">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-10 h-10 rounded-xl accent-soft flex items-center justify-center">
+                <i class="fa-solid fa-brain accent-text"></i>
+              </div>
+              <h3 class="font-bold">Machine Learning</h3>
+            </div>
+
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-2 rounded-lg accent-soft accent-text text-xs font-semibold">Scikit-learn</span>
+              <span class="px-3 py-2 rounded-lg accent-soft accent-text text-xs font-semibold">Regression</span>
+              <span class="px-3 py-2 rounded-lg accent-soft accent-text text-xs font-semibold">Classification</span>
+              <span class="px-3 py-2 rounded-lg accent-soft accent-text text-xs font-semibold">Ensemble Learning</span>
+              <span class="px-3 py-2 rounded-lg accent-soft accent-text text-xs font-semibold">Model Evaluation</span>
+            </div>
+          </div>
+
+          <!-- GenAI -->
+          <div class="glass rounded-2xl p-6 reveal delay-1">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-10 h-10 rounded-xl accent-soft flex items-center justify-center">
+                <i class="fa-solid fa-wand-magic-sparkles accent-text"></i>
+              </div>
+              <h3 class="font-bold">Generative AI</h3>
+            </div>
+
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-2 rounded-lg accent-soft accent-text text-xs font-semibold">Google Gemini API</span>
+              <span class="px-3 py-2 rounded-lg accent-soft accent-text text-xs font-semibold">Prompt Engineering</span>
+              <span class="px-3 py-2 rounded-lg accent-soft accent-text text-xs font-semibold">RAG Basics</span>
+            </div>
+          </div>
+
+          <!-- Web & Deployment -->
+          <div class="glass rounded-2xl p-6 reveal">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-10 h-10 rounded-xl accent-soft flex items-center justify-center">
+                <i class="fa-solid fa-globe accent-text"></i>
+              </div>
+              <h3 class="font-bold">Web & Deployment</h3>
+            </div>
+
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-2 rounded-lg accent-soft accent-text text-xs font-semibold">Flask</span>
+              <span class="px-3 py-2 rounded-lg accent-soft accent-text text-xs font-semibold">HTML</span>
+              <span class="px-3 py-2 rounded-lg accent-soft accent-text text-xs font-semibold">CSS</span>
+              <span class="px-3 py-2 rounded-lg accent-soft accent-text text-xs font-semibold">PythonAnywhere</span>
+            </div>
+          </div>
+
+          <!-- Database -->
+          <div class="glass rounded-2xl p-6 reveal delay-1">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-10 h-10 rounded-xl accent-soft flex items-center justify-center">
+                <i class="fa-solid fa-server accent-text"></i>
+              </div>
+              <h3 class="font-bold">Database</h3>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div class="skill-item glass rounded-xl p-4 flex items-center gap-3" title="MySQL">
+                <i class="fa-solid fa-database skill-icon text-xl accent-text"></i>
+                <span class="text-sm font-medium">MySQL</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tools -->
+          <div class="glass rounded-2xl p-6 reveal">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-10 h-10 rounded-xl accent-soft flex items-center justify-center">
+                <i class="fa-solid fa-toolbox accent-text"></i>
+              </div>
+              <h3 class="font-bold">Tools & Platforms</h3>
+            </div>
+
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-2 rounded-lg accent-soft accent-text text-xs font-semibold">
+                <i class="fa-brands fa-git-alt mr-1"></i> Git
+              </span>
+              <span class="px-3 py-2 rounded-lg accent-soft accent-text text-xs font-semibold">
+                <i class="fa-brands fa-github mr-1"></i> GitHub
+              </span>
+              <span class="px-3 py-2 rounded-lg accent-soft accent-text text-xs font-semibold">VS Code</span>
+              <span class="px-3 py-2 rounded-lg accent-soft accent-text text-xs font-semibold">Jupyter Notebook</span>
+            </div>
+          </div>
+
+          <!-- Core Concepts -->
+          <div class="glass rounded-2xl p-6 reveal delay-1">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-10 h-10 rounded-xl accent-soft flex items-center justify-center">
+                <i class="fa-solid fa-gears accent-text"></i>
+              </div>
+              <h3 class="font-bold">Core Concepts</h3>
+            </div>
+
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-2 rounded-lg accent-soft accent-text text-xs font-semibold">Data Preprocessing</span>
+              <span class="px-3 py-2 rounded-lg accent-soft accent-text text-xs font-semibold">EDA</span>
+              <span class="px-3 py-2 rounded-lg accent-soft accent-text text-xs font-semibold">Feature Engineering</span>
+              <span class="px-3 py-2 rounded-lg accent-soft accent-text text-xs font-semibold">Model Training & Evaluation</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================== PROJECTS ==================== -->
+    <section id="projects" class="py-24">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-5 reveal">
+          <div>
+            <p class="section-label mb-3">03 · Projects</p>
+            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+              Things I've
+              <span class="gradient-text">built.</span>
+            </h2>
+          </div>
+
+          <a
+            href="https://github.com/Spratik2025"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm font-semibold accent-text hover:underline"
+          >
+            View GitHub <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </a>
+        </div>
+
+        <div class="mt-12 grid lg:grid-cols-3 gap-6">
+
+          <!-- Project 1 -->
+          <article class="project-card glass rounded-2xl p-6 flex flex-col reveal">
+            <div class="flex items-start justify-between gap-4">
+              <div class="w-12 h-12 rounded-2xl accent-soft flex items-center justify-center">
+                <i class="fa-solid fa-wallet text-xl accent-text"></i>
+              </div>
+
+              <span class="text-[10px] uppercase tracking-widest font-bold accent-text">
+                GenAI
+              </span>
+            </div>
+
+            <h3 class="mt-6 text-xl font-bold">
+              Gen AI Personal Expense Advisor
+            </h3>
+
+            <p class="mt-3 text-sm text-muted leading-6">
+              A Generative AI-powered personal finance advisor that analyzes
+              income, expenses, savings, dependents, and financial goals to
+              provide personalized financial guidance.
+            </p>
+
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 rounded-md accent-soft accent-text text-[11px] font-semibold">Python</span>
+              <span class="px-2.5 py-1 rounded-md accent-soft accent-text text-[11px] font-semibold">Flask</span>
+              <span class="px-2.5 py-1 rounded-md accent-soft accent-text text-[11px] font-semibold">Google Gemini API</span>
+              <span class="px-2.5 py-1 rounded-md accent-soft accent-text text-[11px] font-semibold">HTML</span>
+              <span class="px-2.5 py-1 rounded-md accent-soft accent-text text-[11px] font-semibold">CSS</span>
+            </div>
+
+            <div class="mt-auto pt-7 grid grid-cols-2 gap-3">
+              <a
+                href="http://Pratiksutar2002.pythonanywhere.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl accent-bg text-slate-950 text-xs font-bold hover:opacity-90 transition"
+              >
+                Live Demo
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+
+              <a
+                href="https://github.com/Spratik2025/AI_Personal_Expense_Advisor"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-slate-500/20 text-xs font-bold hover:border-teal-400/40 hover:text-teal-400 transition"
+              >
+                <i class="fa-brands fa-github"></i>
+                GitHub
+              </a>
+            </div>
+          </article>
+
+
+          <!-- Project 2 -->
+          <article class="project-card glass rounded-2xl p-6 flex flex-col reveal delay-1">
+            <div class="flex items-start justify-between gap-4">
+              <div class="w-12 h-12 rounded-2xl accent-soft flex items-center justify-center">
+                <i class="fa-solid fa-seedling text-xl accent-text"></i>
+              </div>
+
+              <span class="text-[10px] uppercase tracking-widest font-bold accent-text">
+                Machine Learning
+              </span>
+            </div>
+
+            <h3 class="mt-6 text-xl font-bold">
+              Crop Recommendation System
+            </h3>
+
+            <p class="mt-3 text-sm text-muted leading-6">
+              A Machine Learning-based system that predicts the most suitable
+              crop using soil and environmental conditions such as N, P, K,
+              temperature, humidity, pH, and rainfall.
+            </p>
+
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 rounded-md accent-soft accent-text text-[11px] font-semibold">Python</span>
+              <span class="px-2.5 py-1 rounded-md accent-soft accent-text text-[11px] font-semibold">Pandas</span>
+              <span class="px-2.5 py-1 rounded-md accent-soft accent-text text-[11px] font-semibold">NumPy</span>
+              <span class="px-2.5 py-1 rounded-md accent-soft accent-text text-[11px] font-semibold">Scikit-learn</span>
+              <span class="px-2.5 py-1 rounded-md accent-soft accent-text text-[11px] font-semibold">Flask</span>
+              <span class="px-2.5 py-1 rounded-md accent-soft accent-text text-[11px] font-semibold">HTML/CSS</span>
+            </div>
+
+            <div class="mt-auto pt-7 grid grid-cols-2 gap-3">
+              <a
+                href="https://pratiksutar2003.pythonanywhere.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl accent-bg text-slate-950 text-xs font-bold hover:opacity-90 transition"
+              >
+                Live Demo
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+
+              <a
+                href="https://github.com/Spratik2025/Crop_Prediction"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-slate-500/20 text-xs font-bold hover:border-teal-400/40 hover:text-teal-400 transition"
+              >
+                <i class="fa-brands fa-github"></i>
+                GitHub
+              </a>
+            </div>
+          </article>
+
+
+          <!-- Project 3 -->
+          <article class="project-card glass rounded-2xl p-6 flex flex-col reveal delay-2">
+            <div class="flex items-start justify-between gap-4">
+              <div class="w-12 h-12 rounded-2xl accent-soft flex items-center justify-center">
+                <i class="fa-solid fa-house-chimney text-xl accent-text"></i>
+              </div>
+
+              <span class="text-[10px] uppercase tracking-widest font-bold accent-text">
+                Regression
+              </span>
+            </div>
+
+            <h3 class="mt-6 text-xl font-bold">
+              House Price Prediction
+            </h3>
+
+            <p class="mt-3 text-sm text-muted leading-6">
+              A Machine Learning web application that predicts house prices
+              from property-related inputs using a trained regression model
+              integrated with Flask.
+            </p>
+
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 rounded-md accent-soft accent-text text-[11px] font-semibold">Python</span>
+              <span class="px-2.5 py-1 rounded-md accent-soft accent-text text-[11px] font-semibold">Pandas</span>
+              <span class="px-2.5 py-1 rounded-md accent-soft accent-text text-[11px] font-semibold">NumPy</span>
+              <span class="px-2.5 py-1 rounded-md accent-soft accent-text text-[11px] font-semibold">Scikit-learn</span>
+              <span class="px-2.5 py-1 rounded-md accent-soft accent-text text-[11px] font-semibold">Flask</span>
+              <span class="px-2.5 py-1 rounded-md accent-soft accent-text text-[11px] font-semibold">HTML/CSS</span>
+            </div>
+
+            <div class="mt-auto pt-7 grid grid-cols-2 gap-3">
+              <a
+                href="https://pratiks.pythonanywhere.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl accent-bg text-slate-950 text-xs font-bold hover:opacity-90 transition"
+              >
+                Live Demo
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+
+              <a
+                href="https://github.com/Spratik2025/House_Price_Prediction"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-slate-500/20 text-xs font-bold hover:border-teal-400/40 hover:text-teal-400 transition"
+              >
+                <i class="fa-brands fa-github"></i>
+                GitHub
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================== EXPERIENCE ==================== -->
+    <section id="experience" class="py-24 bg-black/5">
+      <div class="max-w-5xl mx-auto px-5 sm:px-8 lg:px-10">
+
+        <div class="reveal">
+          <p class="section-label mb-3">04 · Experience</p>
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+            Professional
+            <span class="gradient-text">experience.</span>
+          </h2>
+        </div>
+
+        <div class="mt-12 relative">
+          <div class="timeline-line absolute left-[11px] top-2 bottom-0 w-px"></div>
+
+          <div class="relative pl-10 reveal">
+            <div class="absolute left-0 top-1.5 w-6 h-6 rounded-full accent-bg border-4 border-[var(--bg)] shadow-lg"></div>
+
+            <div class="glass rounded-2xl p-6 sm:p-8">
+              <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+                <div>
+                  <p class="section-label mb-2">Aug 2026 – Present</p>
+                  <h3 class="text-xl sm:text-2xl font-bold">
+                    Machine Learning Intern
+                  </h3>
+                  <p class="accent-text font-semibold mt-1">
+                    Valentius Kryptix
+                  </p>
+                </div>
+
+                <span class="inline-flex items-center gap-2 self-start px-3 py-2 rounded-lg accent-soft accent-text text-xs font-semibold">
+                  <span class="w-1.5 h-1.5 rounded-full accent-bg animate-pulse"></span>
+                  Current
+                </span>
+              </div>
+
+              <ul class="mt-7 space-y-4 text-sm text-muted leading-6">
+                <li class="flex gap-3">
+                  <i class="fa-solid fa-check accent-text mt-1"></i>
+                  <span>
+                    Developed and evaluated machine learning models using Python
+                    and Scikit-learn on real-world datasets.
+                  </span>
+                </li>
+
+                <li class="flex gap-3">
+                  <i class="fa-solid fa-check accent-text mt-1"></i>
+                  <span>
+                    Built and compared supervised and unsupervised models,
+                    including Decision Tree, Random Forest, and KMeans Clustering.
+                  </span>
+                </li>
+
+                <li class="flex gap-3">
+                  <i class="fa-solid fa-check accent-text mt-1"></i>
+                  <span>
+                    Performed data cleaning, preprocessing, exploratory data
+                    analysis, feature selection, and feature engineering.
+                  </span>
+                </li>
+
+                <li class="flex gap-3">
+                  <i class="fa-solid fa-check accent-text mt-1"></i>
+                  <span>
+                    Evaluated models using Accuracy, Precision, Recall,
+                    F1-score, Confusion Matrix, and other performance metrics.
+                  </span>
+                </li>
+
+                <li class="flex gap-3">
+                  <i class="fa-solid fa-check accent-text mt-1"></i>
+                  <span>
+                    Performed hyperparameter tuning and compared algorithms
+                    based on accuracy, performance, and suitability for datasets.
+                  </span>
+                </li>
+
+                <li class="flex gap-3">
+                  <i class="fa-solid fa-check accent-text mt-1"></i>
+                  <span>
+                    Worked on ensemble learning and model benchmarking to
+                    understand the strengths and limitations of different algorithms.
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==================== EDUCATION ==================== -->
+    <section id="education" class="py-24">
+      <div class="max-w-5xl mx-auto px-5 sm:px-8 lg:px-10">
+
+        <div class="reveal">
+          <p class="section-label mb-3">05 · Education</p>
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+            Academic
+            <span class="gradient-text">journey.</span>
+          </h2>
+        </div>
+
+        <div class="mt-12 relative">
+          <div class="timeline-line absolute left-[11px] top-2 bottom-0 w-px"></div>
+
+          <!-- B.Tech -->
+          <div class="relative pl-10 pb-10 reveal">
+            <div class="absolute left-0 top-1.5 w-6 h-6 rounded-full accent-bg border-4 border-[var(--bg)]"></div>
+
+            <div class="glass rounded-2xl p-6 sm:p-7">
+              <div class="flex flex-col sm:flex-row sm:justify-between gap-3">
+                <div>
+                  <p class="section-label mb-2">Aug 2022 – June 2026</p>
+                  <h3 class="text-xl font-bold">
+                    Bachelor of Technology (B.Tech)
+                  </h3>
+                  <p class="text-muted mt-1">
+                    Computer Science and Engineering
+                  </p>
+                </div>
+
+                <div class="sm:text-right">
+                  <p class="text-2xl font-extrabold accent-text">7.35/10</p>
+                  <p class="text-xs text-muted mt-1">CGPA</p>
+                </div>
+              </div>
+
+              <p class="mt-5 text-sm text-muted">
+                Dr. Babasaheb Ambedkar Technological University (DBATU),
+                Lonere, Raigad
+              </p>
+            </div>
+          </div>
+
+          <!-- HSC -->
+          <div class="relative pl-10 pb-10 reveal delay-1">
+            <div class="absolute left-0 top-1.5 w-6 h-6 rounded-full border-2 border-teal-400 bg-[var(--bg)]"></div>
+
+            <div class="glass rounded-2xl p-6 sm:p-7">
+              <div class="flex flex-col sm:flex-row sm:justify-between gap-3">
+                <div>
+                  <p class="section-label mb-2">June 2020 – March 2022</p>
+                  <h3 class="text-xl font-bold">
+                    Higher Secondary Certificate (HSC)
+                  </h3>
+                  <p class="text-muted mt-1">
+                    PVP College, Patoda · Maharashtra State Board
+                  </p>
+                </div>
+
+                <div class="sm:text-right">
+                  <p class="text-2xl font-extrabold accent-text">81.33%</p>
+                  <p class="text-xs text-muted mt-1">Percentage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SSC -->
+          <div class="relative pl-10 reveal delay-2">
+            <div class="absolute left-0 top-1.5 w-6 h-6 rounded-full border-2 border-teal-400 bg-[var(--bg)]"></div>
+
+            <div class="glass rounded-2xl p-6 sm:p-7">
+              <div class="flex flex-col sm:flex-row sm:justify-between gap-3">
+                <div>
+                  <p class="section-label mb-2">June 2019 – March 2020</p>
+                  <h3 class="text-xl font-bold">
+                    Secondary School Certificate (SSC)
+                  </h3>
+                  <p class="text-muted mt-1">
+                    BVP High School · Maharashtra State Board
+                  </p>
+                </div>
+
+                <div class="sm:text-right">
+                  <p class="text-2xl font-extrabold accent-text">83.00%</p>
+                  <p class="text-xs text-muted mt-1">Percentage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================== CERTIFICATIONS ==================== -->
+    <section id="certifications" class="py-24 bg-black/5">
+      <div class="max-w-5xl mx-auto px-5 sm:px-8 lg:px-10">
+
+        <div class="reveal">
+          <p class="section-label mb-3">06 · Certification</p>
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+            Continuous
+            <span class="gradient-text">learning.</span>
+          </h2>
+        </div>
+
+        <div class="mt-10 glass rounded-2xl p-6 sm:p-8 reveal">
+          <div class="flex flex-col sm:flex-row gap-5 sm:items-center">
+            <div class="w-14 h-14 shrink-0 rounded-2xl accent-soft flex items-center justify-center">
+              <i class="fa-solid fa-certificate text-xl accent-text"></i>
+            </div>
+
+            <div>
+              <h3 class="text-lg sm:text-xl font-bold">
+                Data Science and Machine Learning with GenAI
+              </h3>
+              <p class="text-sm text-muted mt-2">
+                Adhyayan IT and Training and Placement, Pune
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==================== CONTACT ==================== -->
+    <section id="contact" class="py-24">
+      <div class="max-w-5xl mx-auto px-5 sm:px-8 lg:px-10">
+
+        <div class="glass rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden reveal">
+          <div class="absolute -top-24 -right-24 w-64 h-64 rounded-full bg-teal-400/10 blur-3xl"></div>
+          <div class="absolute -bottom-24 -left-24 w-64 h-64 rounded-full bg-cyan-400/5 blur-3xl"></div>
+
+          <div class="relative">
+            <p class="section-label mb-3">07 · Contact</p>
+
+            <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight">
+              Let's build something
+              <span class="gradient-text">useful.</span>
+            </h2>
+
+            <p class="mt-5 text-muted max-w-2xl mx-auto leading-7">
+              I'm actively looking for opportunities in Data Science,
+              Machine Learning, and related IT roles. Feel free to connect
+              with me.
+            </p>
+
+            <div class="mt-9 flex flex-col sm:flex-row justify-center gap-3">
+              <a
+                href="mailto:pratiksutar978@gmail.com"
+                class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl accent-bg text-slate-950 font-bold text-sm hover:opacity-90 transition"
+              >
+                <i class="fa-solid fa-envelope"></i>
+                Email Me
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/pratik-sutar01"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl glass font-semibold text-sm hover:border-teal-400/40 transition"
+              >
+                <i class="fa-brands fa-linkedin-in"></i>
+                LinkedIn
+              </a>
+            </div>
+
+            <div class="mt-8 flex flex-wrap justify-center gap-x-7 gap-y-3 text-sm text-muted">
+              <a
+                href="mailto:pratiksutar978@gmail.com"
+                class="hover:text-teal-400 transition"
+              >
+                <i class="fa-solid fa-envelope mr-2"></i>
+                pratiksutar978@gmail.com
+              </a>
+
+              <a
+                href="tel:+919146149923"
+                class="hover:text-teal-400 transition"
+              >
+                <i class="fa-solid fa-phone mr-2"></i>
+                +91 9146149923
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="border-t border-slate-500/10">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-5">
+
+        <div>
+          <p class="font-bold">
+            Pratik <span class="accent-text">Sutar</span>
+          </p>
+          <p class="text-xs text-muted mt-1">
+            Data Science · Machine Learning · Generative AI
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <a
+            href="https://github.com/Spratik2025"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            class="w-9 h-9 rounded-lg glass flex items-center justify-center hover:text-teal-400 transition"
+          >
+            <i class="fa-brands fa-github"></i>
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/pratik-sutar01"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            class="w-9 h-9 rounded-lg glass flex items-center justify-center hover:text-teal-400 transition"
+          >
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+
+          <a
+            href="https://spratik2025.github.io/-portfolio/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Portfolio"
+            class="w-9 h-9 rounded-lg glass flex items-center justify-center hover:text-teal-400 transition"
+          >
+            <i class="fa-solid fa-globe"></i>
+          </a>
+        </div>
+
+        <p class="text-xs text-muted">
+          © <span id="year"></span> Pratik Sutar
+        </p>
+
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    // -------------------------------------------------------
+    // Theme Toggle
+    // -------------------------------------------------------
+    const body = document.body;
+    const themeToggle = document.getElementById("themeToggle");
+    const themeIcon = document.getElementById("themeIcon");
+
+    const savedTheme = localStorage.getItem("portfolio-theme");
+
+    if (savedTheme === "light") {
+      body.classList.add("light");
+      body.classList.remove("dark");
+      themeIcon.className = "fa-solid fa-moon text-sm";
+    }
+
+    themeToggle.addEventListener("click", () => {
+      body.classList.toggle("light");
+      body.classList.toggle("dark");
+
+      const isLight = body.classList.contains("light");
+
+      themeIcon.className = isLight
+        ? "fa-solid fa-moon text-sm"
+        : "fa-solid fa-sun text-sm";
+
+      localStorage.setItem(
+        "portfolio-theme",
+        isLight ? "light" : "dark"
+      );
+    });
+
+
+    // -------------------------------------------------------
+    // Mobile Menu
+    // -------------------------------------------------------
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    menuToggle.addEventListener("click", () => {
+      mobileMenu.classList.toggle("open");
+
+      const icon = menuToggle.querySelector("i");
+
+      if (mobileMenu.classList.contains("open")) {
+        icon.className = "fa-solid fa-xmark";
+      } else {
+        icon.className = "fa-solid fa-bars";
+      }
+    });
+
+    document.querySelectorAll(".mobile-nav-link").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        menuToggle.querySelector("i").className = "fa-solid fa-bars";
+      });
+    });
+
+
+    // -------------------------------------------------------
+    // Scroll Reveal Animation
+    // -------------------------------------------------------
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12
+      }
+    );
+
+    revealElements.forEach((element) => {
+      revealObserver.observe(element);
+    });
+
+
+    // -------------------------------------------------------
+    // Counter Animation
+    // -------------------------------------------------------
+    const counters = document.querySelectorAll(".counter");
+
+    const animateCounter = (counter) => {
+      const target = parseFloat(counter.dataset.target);
+      const decimals = parseInt(counter.dataset.decimals || "0", 10);
+
+      const duration = 1200;
+      const startTime = performance.now();
+
+      const updateCounter = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        // Ease-out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = target * eased;
+
+        counter.textContent = current.toFixed(decimals);
+
+        if (progress < 1) {
+          requestAnimationFrame(updateCounter);
+        }
+      };
+
+      requestAnimationFrame(updateCounter);
+    };
+
+    const statsSection = document.querySelector(".stat-card")?.parentElement;
+
+    if (statsSection) {
+      let countersStarted = false;
+
+      const statsObserver = new IntersectionObserver(
+        (entries, observer) => {
+          if (entries[0].isIntersecting && !countersStarted) {
+            countersStarted = true;
+            counters.forEach(animateCounter);
+            observer.disconnect();
+          }
+        },
+        {
+          threshold: 0.3
+        }
+      );
+
+      statsObserver.observe(statsSection);
+    }
+
+
+    // -------------------------------------------------------
+    // Active Navigation Highlighting
+    // -------------------------------------------------------
+    const sections = document.querySelectorAll("main section[id]");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("id");
+
+            navLinks.forEach((link) => {
+              link.classList.remove("active");
+
+              if (link.getAttribute("href") === `#${id}`) {
+                link.classList.add("active");
+              }
+            });
+          }
+        });
+      },
+      {
+        rootMargin: "-35% 0px -55% 0px"
+      }
+    );
+
+    sections.forEach((section) => {
+      sectionObserver.observe(section);
+    });
+
+
+    // -------------------------------------------------------
+    // Coming Soon Placeholder Links
+    // -------------------------------------------------------
+    document.querySelectorAll('[data-placeholder="true"]').forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+      });
+    });
+
+
+    // -------------------------------------------------------
+    // Current Year
+    // -------------------------------------------------------
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
