@@ -306,6 +306,65 @@
       background: rgba(45, 212, 191, 0.25);
     }
   </style>
+
+
+<style>
+.view-cert-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+    border: 0;
+    background: transparent;
+    color: #2dd4bf;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+}
+.view-cert-btn:hover { text-decoration: underline; }
+.certificate-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    padding: 20px;
+    background: rgba(0,0,0,.92);
+    align-items: center;
+    justify-content: center;
+}
+.certificate-modal.show { display: flex; }
+.certificate-modal-content {
+    position: relative;
+    width: min(1100px, 96vw);
+    max-height: 94vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.certificate-modal-content img {
+    max-width: 100%;
+    max-height: 92vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
+}
+.certificate-close {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    width: 42px;
+    height: 42px;
+    border: 0;
+    border-radius: 50%;
+    background: #111827;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 2;
+}
+</style>
+
 </head>
 
 <body class="dark">
@@ -519,7 +578,7 @@
 
           <div class="stat-card glass rounded-2xl p-6 reveal delay-2">
             <p class="text-3xl sm:text-4xl font-extrabold">
-              <span class="counter" data-target="5">0</span>
+              <span class="counter" data-target="6">0</span>
             </p>
             <p class="text-sm text-muted mt-2">Certifications</p>
           </div>
@@ -1137,7 +1196,7 @@
                     Secondary School Certificate (SSC)
                   </h3>
                   <p class="text-muted mt-1">
-                    BVP High School · Maharashtra State Board
+                    Bhameshwar Vidyalaya Patoda · Maharashtra State Board
                   </p>
                 </div>
 
@@ -1169,109 +1228,59 @@
         <div class="mt-10 grid md:grid-cols-2 gap-5">
 
           <!-- Certification 1 -->
-          <a
-            href="https://drive.google.com/drive/folders/1TgnQZH8DRTiO4QwGrO5s4ttjaTeg4TYi"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="glass rounded-2xl p-6 sm:p-7 reveal project-card block"
-          >
-            <div class="flex gap-5 items-start">
-              <div class="w-14 h-14 shrink-0 rounded-2xl accent-soft flex items-center justify-center">
-                <i class="fa-brands fa-python text-xl accent-text"></i>
-              </div>
-              <div>
-                <h3 class="text-lg font-bold">Python Programming Language</h3>
-                <p class="text-sm text-muted mt-2">Simplilearn</p>
-                <p class="text-xs accent-text mt-3 font-semibold">
-                  View Certificate <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
-                </p>
-              </div>
+          <div class="glass rounded-2xl p-4 sm:p-5 reveal project-card">
+<div class="pt-4">
+              <h3 class="text-lg font-bold">Python Programming Language</h3>
+              <p class="text-sm text-muted mt-2">Simplilearn</p>
+              <button type="button" class="view-cert-btn mt-4" onclick="openCertificate('Python Certification.png', 'Python Programming Language Certificate')">
+                <i class="fa-solid fa-eye"></i> View
+              </button>
             </div>
-          </a>
+          </div>
 
           <!-- Certification 2 -->
-          <a
-            href="https://drive.google.com/drive/folders/1TgnQZH8DRTiO4QwGrO5s4ttjaTeg4TYi"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="glass rounded-2xl p-6 sm:p-7 reveal delay-1 project-card block"
-          >
-            <div class="flex gap-5 items-start">
-              <div class="w-14 h-14 shrink-0 rounded-2xl accent-soft flex items-center justify-center">
-                <i class="fa-solid fa-code text-xl accent-text"></i>
-              </div>
-              <div>
-                <h3 class="text-lg font-bold">Prompt Engineering With GitHub Copilot</h3>
-                <p class="text-sm text-muted mt-2">Simplilearn</p>
-                <p class="text-xs accent-text mt-3 font-semibold">
-                  View Certificate <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
-                </p>
-              </div>
+          <div class="glass rounded-2xl p-4 sm:p-5 reveal delay-1 project-card">
+<div class="pt-4">
+              <h3 class="text-lg font-bold">Prompt Engineering With GitHub Copilot</h3>
+              <p class="text-sm text-muted mt-2">Simplilearn</p>
+              <button type="button" class="view-cert-btn mt-4" onclick="openCertificate('Prompt Engg.png', 'Prompt Engineering With GitHub Copilot Certificate')">
+                <i class="fa-solid fa-eye"></i> View
+              </button>
             </div>
-          </a>
+          </div>
 
           <!-- Certification 3 -->
-          <a
-            href="https://drive.google.com/drive/folders/1TgnQZH8DRTiO4QwGrO5s4ttjaTeg4TYi"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="glass rounded-2xl p-6 sm:p-7 reveal delay-2 project-card block"
-          >
-            <div class="flex gap-5 items-start">
-              <div class="w-14 h-14 shrink-0 rounded-2xl accent-soft flex items-center justify-center">
-                <i class="fa-solid fa-wand-magic-sparkles text-xl accent-text"></i>
-              </div>
-              <div>
-                <h3 class="text-lg font-bold">Gemini For The Google Workspace</h3>
-                <p class="text-sm text-muted mt-2">Simplilearn</p>
-                <p class="text-xs accent-text mt-3 font-semibold">
-                  View Certificate <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
-                </p>
-              </div>
+          <div class="glass rounded-2xl p-4 sm:p-5 reveal delay-2 project-card">
+<div class="pt-4">
+              <h3 class="text-lg font-bold">Gemini For The Google Workspace</h3>
+              <p class="text-sm text-muted mt-2">Simplilearn</p>
+              <button type="button" class="view-cert-btn mt-4" onclick="openCertificate('Google Workspace.png', 'Gemini For The Google Workspace Certificate')">
+                <i class="fa-solid fa-eye"></i> View
+              </button>
             </div>
-          </a>
+          </div>
 
           <!-- Certification 4 -->
-          <a
-            href="https://drive.google.com/drive/folders/1TgnQZH8DRTiO4QwGrO5s4ttjaTeg4TYi"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="glass rounded-2xl p-6 sm:p-7 reveal delay-3 project-card block"
-          >
-            <div class="flex gap-5 items-start">
-              <div class="w-14 h-14 shrink-0 rounded-2xl accent-soft flex items-center justify-center">
-                <i class="fa-solid fa-file-code text-xl accent-text"></i>
-              </div>
-              <div>
-                <h3 class="text-lg font-bold">C++ Programming Language</h3>
-                <p class="text-sm text-muted mt-2">Ajay Infotech Ambajogai</p>
-                <p class="text-xs accent-text mt-3 font-semibold">
-                  View Certificate <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
-                </p>
-              </div>
+          <div class="glass rounded-2xl p-4 sm:p-5 reveal delay-3 project-card">
+<div class="pt-4">
+              <h3 class="text-lg font-bold">C++ Programming Language</h3>
+              <p class="text-sm text-muted mt-2">Ajay Infotech, Ambajogai</p>
+              <button type="button" class="view-cert-btn mt-4" onclick="openCertificate('C++ Programming.png', 'C++ Programming Language Certificate')">
+                <i class="fa-solid fa-eye"></i> View
+              </button>
             </div>
-          </a>
+          </div>
 
           <!-- Certification 5 -->
-          <a
-            href="https://drive.google.com/drive/folders/1TgnQZH8DRTiO4QwGrO5s4ttjaTeg4TYi"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="glass rounded-2xl p-6 sm:p-7 reveal project-card block"
-          >
-            <div class="flex gap-5 items-start">
-              <div class="w-14 h-14 shrink-0 rounded-2xl accent-soft flex items-center justify-center">
-                <i class="fa-solid fa-c text-xl accent-text"></i>
-              </div>
-              <div>
-                <h3 class="text-lg font-bold">C Programming Language</h3>
-                <p class="text-sm text-muted mt-2">Ajay Infotech Ambajogai</p>
-                <p class="text-xs accent-text mt-3 font-semibold">
-                  View Certificate <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
-                </p>
-              </div>
+          <div class="glass rounded-2xl p-4 sm:p-5 reveal project-card">
+<div class="pt-4">
+              <h3 class="text-lg font-bold">C Programming Language</h3>
+              <p class="text-sm text-muted mt-2">Ajay Infotech, Ambajogai</p>
+              <button type="button" class="view-cert-btn mt-4" onclick="openCertificate('C Programming.png', 'C Programming Language Certificate')">
+                <i class="fa-solid fa-eye"></i> View
+              </button>
             </div>
-          </a>
+          </div>
 
           <!-- Certification 6 -->
           <div class="glass rounded-2xl p-6 sm:p-7 reveal delay-1">
@@ -1291,8 +1300,17 @@
       </div>
     </section>
 
+    <!-- ==================== CERTIFICATE VIEW MODAL ==================== -->
+    <div id="certificateModal" class="certificate-modal" onclick="closeCertificate(event)">
+      <div class="certificate-modal-content" onclick="event.stopPropagation()">
+        <button type="button" class="certificate-close" onclick="closeCertificate()" aria-label="Close certificate">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <img id="certificateModalImage" src="" alt="Certificate">
+      </div>
+    </div>
 
-    <!-- ==================== CONTACT ==================== -->
+<!-- ==================== CONTACT ==================== -->
     <section id="contact" class="py-24">
       <div class="max-w-5xl mx-auto px-5 sm:px-8 lg:px-10">
 
@@ -1597,7 +1615,38 @@
     // Current Year
     // -------------------------------------------------------
     document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+
+    // -------------------------------------------------------
+    // Certificate Viewer
+    // -------------------------------------------------------
+    function openCertificate(imagePath, title) {
+      const modal = document.getElementById("certificateModal");
+      const image = document.getElementById("certificateModalImage");
+
+      image.src = imagePath;
+      image.alt = title || "Certificate";
+      modal.classList.add("show");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeCertificate(event) {
+      if (event && event.target !== event.currentTarget) return;
+
+      const modal = document.getElementById("certificateModal");
+      const image = document.getElementById("certificateModalImage");
+
+      modal.classList.remove("show");
+      image.src = "";
+      document.body.style.overflow = "";
+    }
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeCertificate();
+      }
+    });
+
+</script>
 
 </body>
 </html>
